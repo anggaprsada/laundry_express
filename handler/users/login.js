@@ -44,11 +44,11 @@ module.exports = async (req, res) => {
         const email = user[0].email;
 
         const accesToken = jwt.sign({idUser, name, email }, process.env.ACCES_TOKEN_SECRET, {
-            expiresIn : '120s'
+            expiresIn : '15m'
         });
 
         const refreshToken = jwt.sign({idUser, name,  email}, process.env.REFRESH_ACCES_TOKEN_SECRET, {
-            expiresIn: '60s'
+            expiresIn: '7d'
         });
 
         await User.update({token : refreshToken},{
@@ -57,7 +57,7 @@ module.exports = async (req, res) => {
             } });
         res.cookie('refresh_token', refreshToken, {
             httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000
+            maxAge: 7 * 24 * 60 * 60 * 1000
         });
 
         return res.status(200).json({
