@@ -4,8 +4,8 @@ const v = new Validator();
 
 module.exports = async (req, res) => {
   const schema = {
-    status: { type: 'string', optional: true, empty: false, enum: ['pending', 'processing', 'completed', 'cancelled'] },
-    productName: { type: 'enum', optional: true, values: ['cepat', 'kilat', 'mantap'], empty: false },
+    status: { type: 'string', optional: true, empty: false, enum: ['Pending', 'Processing', 'Completed', 'Cancelled'] },
+    productName: { type: 'enum', optional: true, values: ['Cepat', 'Kilat', 'Mantap'], empty: false },
     quantity: { type: 'number', positive: true, optional: true, empty: false }
   };
 
@@ -42,9 +42,9 @@ module.exports = async (req, res) => {
 
       let pricePerUnit;
       switch (productName) {
-        case 'cepat': pricePerUnit = 5000; break;
-        case 'kilat': pricePerUnit = 7000; break;
-        case 'mantap': pricePerUnit = 10000; break;
+        case 'Cepat': pricePerUnit = 5000; break;
+        case 'Kilat': pricePerUnit = 7000; break;
+        case 'Mantap': pricePerUnit = 10000; break;
         default: pricePerUnit = 0;
       }
 

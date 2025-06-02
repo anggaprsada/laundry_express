@@ -4,7 +4,7 @@ module.exports = async (req,res) =>{
     const id = req.params.id;
 
     const user = await User.findByPk(id,{
-        attributes:['id','name','phone','pass']
+        attributes:['id','name','email','pass']
     });
 
     if(!user){
@@ -17,7 +17,7 @@ module.exports = async (req,res) =>{
     }
 
     const sqlOptions = {
-        attributes:['id','name','phone','pass']
+        attributes:['id','name','email','pass']
     }
 
     const users = await User.findAll(sqlOptions);

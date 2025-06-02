@@ -9,9 +9,9 @@ module.exports = async (req, res) => {
 
   const schema = {
     customerId: { type: "number", integer: true, positive: true, empty: false },
-    status: { type: "enum", values: ['pending', 'processing', 'completed', 'cancelled'], optional: true },
+    status: { type: "enum", values: ['Pending', 'Processing', 'Completed', 'Cancelled'], optional: true },
     orderDate: { type: "date", optional: true },
-    productName: { type: "enum", values: ['cepat', 'kilat', 'mantap'] },
+    productName: { type: "enum", values: ['Cepat', 'Kilat', 'Mantap'] },
     quantity: {type: "number", positive: true, empty: false}
   };
 
@@ -39,13 +39,13 @@ module.exports = async (req, res) => {
 
     let pricePerUnit;
     switch (req.body.productName) {
-      case 'cepat':
+      case 'Cepat':
         pricePerUnit = 5000;
         break;
-      case 'kilat':
+      case 'Kilat':
         pricePerUnit = 7000;
         break;
-      case 'mantap':
+      case 'Mantap':
         pricePerUnit = 10000;
         break;
       default:
@@ -58,7 +58,7 @@ module.exports = async (req, res) => {
     const order = await Order.create({
       customerId: req.body.customerId,
       orderDate: req.body.orderDate || new Date(),
-      status: req.body.status || 'pending',
+      status: req.body.status || 'Pending',
       productName: req.body.productName,
       quantity,
       price

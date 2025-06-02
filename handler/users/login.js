@@ -62,7 +62,7 @@ module.exports = async (req, res) => {
 
         return res.status(200).json({
             status : 'OK!',
-            message: accesToken
+            message: accesToken,idUser
         })
     }catch(error){
         console.log(error);
